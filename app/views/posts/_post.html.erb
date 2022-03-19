@@ -1,4 +1,9 @@
 <div id="<%= dom_id post %>">
     <h1><%= @post.title %></h1>
+
+    <% if @post.photo.present? %>
+       <p><%= image_tag @post.photo.variant(:medium) %></p> 
+    <% end %>
+
     <p><%= @post.body %></p>
 </div>
