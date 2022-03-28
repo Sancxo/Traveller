@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   get 'site/home'
   
+  resources :users
   resources :posts
   
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
