@@ -1,3 +1,11 @@
 <div id="<%= dom_id user %>">
-    <p><%= user.name %> - <%= user.email %></p>
+    <h1><%= user.name %></h1>
+
+    <% @user.posts.each do |post| %>
+        <h2><%= link_to post.title, post%></h2>
+        <% if post.photo.present? %>
+            <p><%= image_tag post.photo.variant(:thumb) %></p>
+            <p><%= post.body.truncate(100) %></p>
+        <% end %>
+    <% end %>
 </div>
