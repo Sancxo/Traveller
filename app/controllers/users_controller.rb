@@ -25,6 +25,7 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.save
+        login(@user)
         format.html { redirect_to user_url(@user), notice: "User was successfully created." }
         format.json { render :show, status: :created, location: @user }
       else
@@ -62,6 +63,10 @@ class UsersController < ApplicationController
     def set_user
       @user = User.find(params[:id])
     end
+
+    # def authorize_user
+    #   redirect_to(site_home_url) unless @user == current_user
+    # end
 
     # Only allow a list of trusted parameters through.
     def user_params
