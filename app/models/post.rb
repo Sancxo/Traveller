@@ -7,7 +7,7 @@ class Post < ApplicationRecord
         attachable.variant :medium, resize_to_limit: [300, 300]
     end
 
-    belongs_to :user
-
     validates :photo, content_type: ['image/png', 'image/jpeg', 'imafe/gif', 'image/webp', 'image/avif']
+
+    belongs_to :user
 end

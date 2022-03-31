@@ -1,7 +1,11 @@
 <div id="<%= dom_id user %>">
     <h1><%= user.name %></h1>
 
-    <% @user.posts.each do |post| %>
+    <% if user.profile_picture.present? %>
+        <p><%= image_tag user.profile_picture.variant(:avatar) %></p>
+    <% end %>
+
+    <% user.posts.each do |post| %>
         <h2><%= link_to post.title, post%></h2>
         <% if post.photo.present? %>
             <p><%= image_tag post.photo.variant(:thumb) %></p>

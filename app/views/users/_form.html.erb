@@ -15,6 +15,9 @@
     <%= form.label :name %>
     <%= form.text_field :name %>
 
+    <%= form.label :profile_picture %>
+    <%= form.file_field :profile_picture %>
+
     <%= form.label :email %>
     <%= form.text_field :email %>
 
@@ -23,6 +26,7 @@
 
     <%= form.label :password_confirmation, "Confirmation" %>
     <%= form.password_field :password_confirmation %>
+
 
     <%= form.submit %>
   </div>
