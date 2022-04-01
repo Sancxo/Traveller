@@ -5,6 +5,27 @@ class PostsController < ApplicationController
   # GET /posts or /posts.json
   def index
     @posts = Post.all
+    respond_to do |format|
+      format.html
+      format.json do
+        geojson = @posts.map do |post|
+          {
+            type: 'Feature',
+            geometry: {
+              type: 'Point',
+              coordinates: [post.longitude, post.latitude],
+            },
+            properties: {
+              name: post.title,
+              popupContent: render_to_string(partial: 'posts/post.html', locals: { post: post } ),
+              address: post.address
+            }
+          }
+        end
+
+        render json: geojson
+      end
+    end
   end
 
   # GET /posts/1 or /posts/1.json
@@ -67,7 +88,7 @@ class PostsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def post_params
-      params.fetch(:post, {}).permit(:title, :body, :photo)
+      params.fetch(:post, {}).permit(:title, :body, :photo, :address)
     end
 
     def require_author

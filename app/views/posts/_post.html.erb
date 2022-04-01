@@ -1,9 +1,13 @@
 <div id="<%= dom_id post %>">
     <h1><%= @post.title %></h1>
+
+    <div id="map"></div>
+    
     <p>
         by <%= link_to @post.user.name, @post.user %> on <%= @post.created_at %>
         <% if @post.updated_at.change(:usec => 0) != @post.created_at.change(:usec => 0) %> (updated on <%= @post.updated_at %>) <% end %>
     </p>
+    <p>where: <%= @post.longitude %>, <%= @post.latitude %></p>
 
     <% if @post.photo.present? %>
        <p><%= image_tag @post.photo.variant(:medium) %></p> 

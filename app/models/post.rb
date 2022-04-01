@@ -10,4 +10,7 @@ class Post < ApplicationRecord
     validates :photo, content_type: ['image/png', 'image/jpeg', 'imafe/gif', 'image/webp', 'image/avif']
 
     belongs_to :user
+
+    geocoded_by :address
+    after_validation :geocode, if: :address_changed?
 end
