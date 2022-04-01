@@ -1,7 +1,7 @@
 source "https://rubygems.org"
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby "2.7.0"
+ruby "~> 2.7.0"
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem "rails", "~> 7.0.2", ">= 7.0.2.3"
@@ -49,8 +49,8 @@ gem "bootsnap", require: false
 gem "image_processing", "~> 1.2"
 # Active Storage validations [https://github.com/igorkasyanchuk/active_storage_validations]
 gem 'active_storage_validations'
-gem 'mini_magick'
 gem 'ruby-vips'
+gem 'mini_magick'
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
